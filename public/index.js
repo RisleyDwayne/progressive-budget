@@ -3,7 +3,7 @@ let myChart;
 
 fetch("/api/transaction")
   .then(response => {
-    return response.json();
+    response.json();
   })
   .then(data => {
     // save db data on global variable
@@ -122,7 +122,7 @@ function sendTransaction(isAdding) {
     }
   })
   .then(response => {    
-    return response.json();
+    response.json();
   })
   .then(data => {
     if (data.errors) {
@@ -144,10 +144,12 @@ function sendTransaction(isAdding) {
   });
 }
 
-document.querySelector("#add-btn").onclick = function() {
+document.querySelector("#add-btn").onclick = function(event) {
+  event.preventDefault();
   sendTransaction(true);
 };
 
-document.querySelector("#sub-btn").onclick = function() {
+document.querySelector("#sub-btn").onclick = function(event) {
+  event.preventDefault();
   sendTransaction(false);
 };
